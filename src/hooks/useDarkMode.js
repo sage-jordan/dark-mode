@@ -12,5 +12,5 @@ export const useDarkMode = () => {
         }
     },[]);
 
-    return [storedValue, setValue];
+    return [darkMode];
 };

@@ -1,11 +1,9 @@
 import { useState } from 'react';
-import JSDOMEnvironment from 'jest-environment-jsdom';
 
 export const useLocalStorage = (key, initValue) => {
-    const [storedValue, setStoredValue] = useState(() => {
-        const item = window.localStorage.getItem(key);
-        return item ? JSDOMEnvironment.parse(item) : initValue;
-    });
+    const item = JSON.parse(window.localStorage.getItem(key));
+
+  const [storedValue, setStoredValue] = useState(item || initValue);
 
     const setValue = value => {
         setStoredValue(value);
